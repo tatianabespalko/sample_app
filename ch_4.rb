@@ -160,17 +160,21 @@
 #puts string_shuffle("foobar")
 # => "abforo"
 
-def string_shuffle(s)
+
+
+# Вирішення Задачі № 1
+
+#def string_shuffle(s)
 #s.split('').shuffle!.join
 
-a = s.split("")
-a.shuffle!
-a.join
+#a = s.split("")
+#a.shuffle!
+#a.join
 
-end
+#end
 
 # => :string_shuffle 
-puts string_shuffle("foobar")
+#puts string_shuffle("foobar")
 
 # => "abforo"
 
@@ -179,3 +183,16 @@ puts string_shuffle("foobar")
 #		self.split('').shuffle.join
 #	end
 #end
+
+#class String
+#	def shuffle
+#		String [self.split('')].reverse
+#	end
+#end
+
+#puts "foobar".shuffle
+
+#puts ('a'..'z').to_a.join
+#puts ('a'..'z').to_a.shuffle.join
+#puts ('a'..'z').to_a.shuffle[0..7].join
+
