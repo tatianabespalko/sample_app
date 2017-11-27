@@ -80,8 +80,8 @@
 #puts "deified".palindrome?
 
 
-puts "".blank?
-puts true
-puts "      ".empty?
-puts "      ".blank?
-puts nil.blank?
+#puts "".blank?
+#puts true
+#puts "      ".empty?
+#puts "      ".blank?
+#puts nil.blank?
