@@ -178,11 +178,15 @@
 
 # => "abforo"
 
-#class String
-#	def shuffle
-#		self.split('').shuffle.join
-#	end
-#end
+class String
+	def shuffle
+		self.split('').shuffle.join
+	end
+end
+
+
+puts "foolbar".shuffle
+
 
 #class String
 #	def shuffle
