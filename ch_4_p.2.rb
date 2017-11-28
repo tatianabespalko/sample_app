@@ -85,3 +85,22 @@
 #puts "      ".empty?
 #puts "      ".blank?
 #puts nil.blank?
+
+#Создайте три хэша, назовите их person1, person2, и person3, С именем (first name)
+#и фамилией (last name) под ключами :first и :last. Затем создайте params хэш с тем,
+#чтобы params[:father] являлся person1, params[:mother] являлся person2, и params[:child]
+#являлся person3 (father, mother, child это отец, мать, и ребенок соответственно).
+#Убедитесь, что, например, params[:father][:first] имеет правильное значение.
+params = {}
+person1 = { :first => "Nicolai", :last => "Bespalko" }
+params[:father] = person1
+person2 = { :first => "Lidia", :last => "Bespalko" }
+params[:mother] = person2
+person3 = { :first => "Tania", :last => "Bespalko"}
+params[:child] = person3
+puts params[:father][:first]
+puts params[:mother][:last]
+puts params[:mother][:first]
+puts params[:child][:first]
+#puts params[:child][:first_name]
+#user = { "first_name" => "Michael", "last_name" => "Hartl"
