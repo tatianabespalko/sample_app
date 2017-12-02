@@ -26,11 +26,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
-    autoprefixer-rails (7.1.6)
-      execjs
-    bootstrap-sass (3.3.5)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.2.19)
+    bootstrap-sass (2.3.2.0)
+      sass (~> 3.2)
     builder (3.1.4)
     capybara (2.5.0)
       mime-types (>= 1.16)
@@ -210,7 +207,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
+  bootstrap-sass (= 2.3.2.0)
   capybara (= 2.5.0)
   childprocess
   coffee-rails (= 4.0.1)
