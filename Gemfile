@@ -13,12 +13,14 @@ group :development, :test do
   gem 'guard-spork'
   gem 'childprocess'
   gem 'rspec-rails'
+
 end
 
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.5.0'
   gem 'libnotify'
+  gem 'factory_girl_rails', '4.2.1'
 end
 
 gem 'sprockets', '2.11.0'
