@@ -6,7 +6,7 @@ describe "User pages" do
 
   describe "index" do
     let(:user) { FactoryGirl.create(:user) }
-    before(:each) do
+    before do
       sign_in user
       visit users_path
     end
@@ -107,6 +107,16 @@ end
       it { should have_link('Sign out', href: signout_path) }
       specify { expect(user.reload.name).to  eq new_name }
       specify { expect(user.reload.email).to eq new_email }
+    end
+
+    describe "forbidden attributes" do
+      let(:params) do
+        { user: { admin: true, password: user.password,
+                  password_confirmation: user.password } }
+      end
+      
+      before { patch :user, {id: user.id}}
+      specify { expect(user.reload).not_to be_admin }
     end
   end
 end
