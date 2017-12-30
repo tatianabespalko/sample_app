@@ -56,15 +56,32 @@ describe "Authentication" do
 
       describe "in the Users controller" do
 
+         describe "visiting the user index" do
+           before { visit users_path }
+           it { should have_title('Sign in') }
+         end
+
         describe "visiting the edit page" do
           before { visit edit_user_path(user) }
           it { should have_title('Sign in') }
         end
 
-        describe "submitting to the update action" do
-          before { patch user_path(user) }
-#          specify { response.should redirect_to(signin_path) }
-          specify { expect(response).to redirect_to(signin_path) }
+        describe "when not signed in", type: :controller do
+          let(:user) { FactoryGirl.create(:user) }
+#          let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
+          
+          before do
+            @controller = UsersController.new
+#            sign_in user, no_capybara: true
+          end
+
+          describe "submitting to the update action" do
+            before { patch :update, {id: user.id, user: {name: user.name, email: user.email, password: user.password,
+                                    password_confirmation: user.password_confirmation} }}
+#            before { patch user_path(user) }
+  #          specify { response.should redirect_to(signin_path) }
+            specify { expect(response).to redirect_to(signin_path) }
+          end
         end
 
         describe "as wrong user", type: :controller do
@@ -76,6 +93,8 @@ describe "Authentication" do
             sign_in user, no_capybara: true
           end
 
+
+
          describe "submitting a GET request to the Users#edit action" do
           before { get :edit, {id: wrong_user.id}}
 #          No route matches {:controller=>"users", :action=>"/users/182"}
@@ -86,12 +105,9 @@ describe "Authentication" do
          end
 
          describe "submitting a PATCH request to the Users#update action" do
-            before { patch user_path(wrong_user) }
+          before { patch :update, {id: wrong_user.id}}
+#            before { patch user_path(wrong_user) }
             specify { expect(response).to redirect_to(root_url) }
-         end
-         describe "visiting the user index" do
-           before { visit users_path }
-           it { should have_title('Sign in') }
          end
        end
      end
