@@ -67,13 +67,20 @@ describe "Authentication" do
           specify { expect(response).to redirect_to(signin_path) }
         end
 
-        describe "as wrong user" do
+        describe "as wrong user", type: :controller do
           let(:user) { FactoryGirl.create(:user) }
           let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
-          before { sign_in user, no_capybara: true }
+          
+          before do
+            @controller = UsersController.new
+            sign_in user, no_capybara: true
+          end
 
          describe "submitting a GET request to the Users#edit action" do
-            before { get edit_user_path(wrong_user) }
+          before { get :edit, {id: wrong_user.id}}
+#          No route matches {:controller=>"users", :action=>"/users/182"}
+
+#            before { get edit_user_path(wrong_user) }
             specify { expect(response.body).not_to match(full_title('Edit user')) }
             specify { expect(response).to redirect_to(root_url) }
          end

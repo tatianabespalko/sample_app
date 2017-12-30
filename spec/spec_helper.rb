@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'spork'
+
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
@@ -20,7 +21,7 @@ Spork.prefork do
   # Checks for pending migrations before tests are run.
   # If you are not using ActiveRecord, you can remove this line.
   ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
-
+  Rails.application.routes.default_url_options[:host] = 'test.host'
   RSpec.configure do |config|
     # ## Mock Framework
     #
