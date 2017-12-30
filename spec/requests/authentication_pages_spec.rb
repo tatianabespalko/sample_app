@@ -22,13 +22,8 @@ describe "Authentication" do
     end
 
     describe "with valid information" do
-      let(:user) { FactoryGirl.create(:user) }
+     let(:user) { FactoryGirl.create(:user) }
      before { sign_in user }
-#      before do
-#        fill_in "Email",    with: user.email.upcase
-#        fill_in "Password", with: user.password
-#        click_button "Sign in"
-#      end
 
       it { should have_title(user.name) }
       it { should have_link('Users',       href: users_path) }
@@ -68,7 +63,8 @@ describe "Authentication" do
 
         describe "submitting to the update action" do
           before { patch user_path(user) }
-          specify { response.should redirect_to(signin_path) }
+#          specify { response.should redirect_to(signin_path) }
+          specify { expect(response).to redirect_to(signin_path) }
         end
 
         describe "as wrong user" do
