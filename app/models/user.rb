@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 					  # true => case_sensitive: false
 	validates :password, length: { minimum: 6 }
   has_many :microposts, dependent: :destroy
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
