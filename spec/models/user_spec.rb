@@ -140,11 +140,12 @@ describe User do
     it "should destroy associated microposts" do
       microposts = @user.microposts.to_a
 #      binding.pry
-      User.destroy_all
+      @user.destroy
       expect(microposts).not_to be_empty
       microposts.each do |micropost|
         expect(Micropost.where(id: micropost.id)).to be_empty
       end
+    end
 
       describe "status" do
         let(:unfollowed_post) do
@@ -155,6 +156,5 @@ describe User do
         its(:feed) { should include(older_micropost) }
         its(:feed) { should_not include(unfollowed_post) }
       end
-    end
   end
 end
