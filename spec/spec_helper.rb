@@ -21,7 +21,7 @@ Spork.prefork do
   # Checks for pending migrations before tests are run.
   # If you are not using ActiveRecord, you can remove this line.
   ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
-  Rails.application.routes.default_url_options[:host] = 'test.host'
+  Rails.application.routes.default_url_options[:host] = 'www.example.com'
   RSpec.configure do |config|
     # ## Mock Framework
     #
@@ -36,7 +36,7 @@ Spork.prefork do
     config.include Rails.application.routes.url_helpers
 
 #    RSpec.configure do |config|
-     config.infer_spec_type_from_file_location!
+#     config.infer_spec_type_from_file_location!
   #  end
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false

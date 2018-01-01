@@ -79,51 +79,7 @@ describe "Authentication" do
           it { should have_title('Sign in') }
         end
 
-        describe "when not signed in", type: :request do
-          let(:user) { FactoryGirl.create(:user) }
-#          let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
-          
-          before do
-            @controller = UsersController.new
-#            sign_in user, no_capybara: true
-          end
-
-          describe "submitting to the update action" do
-            before { patch :update, {id: user.id, user: {name: user.name, email: user.email, password: user.password,
-                                    password_confirmation: user.password_confirmation} }}
-#            before { patch user_path(user) }
-  #          specify { response.should redirect_to(signin_path) }
-            specify { expect(response).to redirect_to(signin_path) }
-          end
-        end
-
-        describe "as wrong user", type: :request do
-          let(:user) { FactoryGirl.create(:user) }
-          let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
-          
-          before do
-            @controller = UsersController.new
-            sign_in user, no_capybara: true
-          end
-
-
-
-         describe "submitting a GET request to the Users#edit action" do
-          before { get :edit, {id: wrong_user.id}}
-#          No route matches {:controller=>"users", :action=>"/users/182"}
-
-#            before { get edit_user_path(wrong_user) }
-            specify { expect(response.body).not_to match(full_title('Edit user')) }
-            specify { expect(response).to redirect_to(root_url) }
-         end
-
-         describe "submitting a PATCH request to the Users#update action" do
-          before { patch :update, {id: wrong_user.id}}
-#            before { patch user_path(wrong_user) }
-            specify { expect(response).to redirect_to(root_url) }
-         end
-       end
-      describe "as non-admin user", type: :request do
+       describe "as non-admin user", type: :request do
         let(:user) { FactoryGirl.create(:user) }
         let(:non_admin) { FactoryGirl.create(:user) }
 
@@ -131,7 +87,7 @@ describe "Authentication" do
 
         describe "submitting a DELETE request to the Users#destroy action" do
           before { delete user_path(user) }
-          specify { expect(response).to redirect_to(root_url) }
+          specify { expect(response).to redirect_to(signin_url) }
         end
       end
      end
