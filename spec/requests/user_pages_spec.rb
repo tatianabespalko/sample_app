@@ -112,21 +112,14 @@ end
    describe "forbidden attributes", type: :request do
 
       let(:user) { FactoryGirl.create(:user) }
-
       let(:params) do
-
         { user: { admin: true, password: user.password, password_confirmation: user.password } }
-
       end
 
       before do
-
         patch user_path(user), params
-
       end
-
       specify { expect(user.reload).not_to be_admin }
-
     end
   end
 end
