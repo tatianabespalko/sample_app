@@ -17,6 +17,7 @@ group :development, :test do
   gem 'childprocess'
   gem 'rspec-rails'
   gem 'rspec-its'
+  gem 'pry-rails'
 
 end
 

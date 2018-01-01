@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
 	has_secure_password
 	before_save { self.email = email.downcase }
   before_create :create_remember_token
@@ -8,6 +9,7 @@ class User < ActiveRecord::Base
 					  uniqueness: {case_sensitive: false }
 					  # true => case_sensitive: false
 	validates :password, length: { minimum: 6 }
+  has_many :microposts, dependent: :destroy
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
