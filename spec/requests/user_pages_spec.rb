@@ -162,7 +162,7 @@ describe "User pages" do
       before { sign_in user }
 
       describe "following a user" do
-        before { visit user_path(other_user) }
+        before { user.unfollow!(other_user); visit user_path(other_user) }
 
         it "should increment the followed user count" do
           expect do
@@ -184,7 +184,7 @@ describe "User pages" do
 
       describe "unfollowing a user" do
         before do
-          user.follow!(other_user)
+#          user.follow!(other_user)
           visit user_path(other_user)
         end
 

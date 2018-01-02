@@ -1,0 +1,251 @@
+
+Randomized with seed 62270
+FFFF..........................FFFFFF.....................................................................................F...F................
+
+Failures:
+
+  1) RelationshipsController creating a relationship with Ajax should respond with success
+     Failure/Error: xhr :post, :create, relationship: { followed_id: other_user.id }
+
+     NoMethodError:
+       undefined method `xhr' for #<RSpec::ExampleGroups::RelationshipsController::CreatingARelationshipWithAjax:0x00000004b9a560>
+     # ./spec/controllers/relationships_controller_spec.rb:19:in `block (3 levels) in <top (required)>'
+
+  2) RelationshipsController creating a relationship with Ajax should increment the Relationship count
+     Failure/Error: xhr :post, :create, relationship: { followed_id: other_user.id }
+
+     NoMethodError:
+       undefined method `xhr' for #<RSpec::ExampleGroups::RelationshipsController::CreatingARelationshipWithAjax:0x000000088a57c0>
+     # ./spec/controllers/relationships_controller_spec.rb:14:in `block (4 levels) in <top (required)>'
+     # ./spec/controllers/relationships_controller_spec.rb:13:in `block (3 levels) in <top (required)>'
+
+  3) RelationshipsController destroying a relationship with Ajax should respond with success
+     Failure/Error: xhr :delete, :destroy, id: relationship.id
+
+     NoMethodError:
+       undefined method `xhr' for #<RSpec::ExampleGroups::RelationshipsController::DestroyingARelationshipWithAjax:0x000000088800d8>
+     # ./spec/controllers/relationships_controller_spec.rb:36:in `block (3 levels) in <top (required)>'
+
+  4) RelationshipsController destroying a relationship with Ajax should decrement the Relationship count
+     Failure/Error: xhr :delete, :destroy, id: relationship.id
+
+     NoMethodError:
+       undefined method `xhr' for #<RSpec::ExampleGroups::RelationshipsController::DestroyingARelationshipWithAjax:0x0000000860dfa8>
+     # ./spec/controllers/relationships_controller_spec.rb:31:in `block (4 levels) in <top (required)>'
+     # ./spec/controllers/relationships_controller_spec.rb:30:in `block (3 levels) in <top (required)>'
+
+  5) User pages edit following/followers follow/unfollow buttons unfollowing a user should decrement the followed user count
+     Failure/Error: relationships.create!(followed_id: other_user.id)
+
+     ActiveRecord::RecordNotUnique:
+       SQLite3::ConstraintException: UNIQUE constraint failed: relationships.follower_id, relationships.followed_id: INSERT INTO "relationships" ("created_at", "followed_id", "follower_id", "updated_at") VALUES (?, ?, ?, ?)
+     
+     # ------------------
+     # --- Caused by: ---
+     # SQLite3::ConstraintException:
+     #   UNIQUE constraint failed: relationships.follower_id, relationships.followed_id
+     #   /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/sqlite3-1.3.13/lib/sqlite3/statement.rb:108:in `step'
+
+  6) User pages edit following/followers follow/unfollow buttons unfollowing a user should decrement the other user's followers count
+     Failure/Error: relationships.create!(followed_id: other_user.id)
+
+     ActiveRecord::RecordNotUnique:
+       SQLite3::ConstraintException: UNIQUE constraint failed: relationships.follower_id, relationships.followed_id: INSERT INTO "relationships" ("created_at", "followed_id", "follower_id", "updated_at") VALUES (?, ?, ?, ?)
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/sqlite3-1.3.13/lib/sqlite3/statement.rb:108:in `step'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/sqlite3-1.3.13/lib/sqlite3/statement.rb:108:in `block in each'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/sqlite3-1.3.13/lib/sqlite3/statement.rb:107:in `loop'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/sqlite3-1.3.13/lib/sqlite3/statement.rb:107:in `each'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/sqlite3_adapter.rb:319:in `to_a'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/sqlite3_adapter.rb:319:in `block in exec_query'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract_adapter.rb:373:in `block in log'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract_adapter.rb:367:in `log'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/sqlite3_adapter.rb:298:in `exec_query'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/database_statements.rb:68:in `exec_insert'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/database_statements.rb:95:in `insert'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `insert'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/relation.rb:64:in `insert'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/persistence.rb:502:in `_create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/attribute_methods/dirty.rb:87:in `_create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/callbacks.rb:306:in `block in _create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:82:in `run_callbacks'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/callbacks.rb:306:in `_create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/timestamp.rb:57:in `_create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/persistence.rb:482:in `create_or_update'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/callbacks.rb:302:in `block in create_or_update'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:113:in `call'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:113:in `call'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:166:in `block in halting'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:166:in `call'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:166:in `block in halting'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:86:in `call'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:86:in `run_callbacks'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/callbacks.rb:302:in `create_or_update'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/persistence.rb:125:in `save!'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/validations.rb:57:in `save!'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/attribute_methods/dirty.rb:29:in `save!'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/transactions.rb:273:in `block in save!'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/transactions.rb:329:in `block in with_transaction_returning_status'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/database_statements.rb:199:in `transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/transactions.rb:208:in `transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/transactions.rb:326:in `with_transaction_returning_status'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/transactions.rb:273:in `save!'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/has_many_association.rb:38:in `insert_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:462:in `block (2 levels) in _create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:389:in `add_to_target'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:460:in `block in _create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:168:in `block in transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/database_statements.rb:201:in `block in transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/database_statements.rb:209:in `within_new_transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/database_statements.rb:201:in `transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/transactions.rb:208:in `transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:167:in `transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:459:in `_create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:141:in `create!'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_proxy.rb:301:in `create!'
+     # ./app/models/user.rb:38:in `follow!'
+     # ./spec/requests/user_pages_spec.rb:187:in `block (6 levels) in <top (required)>'
+     # ------------------
+     # --- Caused by: ---
+     # SQLite3::ConstraintException:
+     #   UNIQUE constraint failed: relationships.follower_id, relationships.followed_id
+     #   /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/sqlite3-1.3.13/lib/sqlite3/statement.rb:108:in `step'
+
+  7) User pages edit following/followers follow/unfollow buttons unfollowing a user toggling the button 
+     Failure/Error: relationships.create!(followed_id: other_user.id)
+
+     ActiveRecord::RecordNotUnique:
+       SQLite3::ConstraintException: UNIQUE constraint failed: relationships.follower_id, relationships.followed_id: INSERT INTO "relationships" ("created_at", "followed_id", "follower_id", "updated_at") VALUES (?, ?, ?, ?)
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/sqlite3-1.3.13/lib/sqlite3/statement.rb:108:in `step'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/sqlite3-1.3.13/lib/sqlite3/statement.rb:108:in `block in each'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/sqlite3-1.3.13/lib/sqlite3/statement.rb:107:in `loop'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/sqlite3-1.3.13/lib/sqlite3/statement.rb:107:in `each'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/sqlite3_adapter.rb:319:in `to_a'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/sqlite3_adapter.rb:319:in `block in exec_query'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract_adapter.rb:373:in `block in log'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract_adapter.rb:367:in `log'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/sqlite3_adapter.rb:298:in `exec_query'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/database_statements.rb:68:in `exec_insert'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/database_statements.rb:95:in `insert'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/query_cache.rb:14:in `insert'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/relation.rb:64:in `insert'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/persistence.rb:502:in `_create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/attribute_methods/dirty.rb:87:in `_create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/callbacks.rb:306:in `block in _create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:82:in `run_callbacks'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/callbacks.rb:306:in `_create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/timestamp.rb:57:in `_create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/persistence.rb:482:in `create_or_update'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/callbacks.rb:302:in `block in create_or_update'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:113:in `call'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:113:in `call'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:166:in `block in halting'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:166:in `call'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:166:in `block in halting'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:86:in `call'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activesupport-4.1.2/lib/active_support/callbacks.rb:86:in `run_callbacks'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/callbacks.rb:302:in `create_or_update'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/persistence.rb:125:in `save!'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/validations.rb:57:in `save!'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/attribute_methods/dirty.rb:29:in `save!'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/transactions.rb:273:in `block in save!'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/transactions.rb:329:in `block in with_transaction_returning_status'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/database_statements.rb:199:in `transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/transactions.rb:208:in `transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/transactions.rb:326:in `with_transaction_returning_status'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/transactions.rb:273:in `save!'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/has_many_association.rb:38:in `insert_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:462:in `block (2 levels) in _create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:389:in `add_to_target'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:460:in `block in _create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:168:in `block in transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/database_statements.rb:201:in `block in transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/database_statements.rb:209:in `within_new_transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/connection_adapters/abstract/database_statements.rb:201:in `transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/transactions.rb:208:in `transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:167:in `transaction'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:459:in `_create_record'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_association.rb:141:in `create!'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/activerecord-4.1.2/lib/active_record/associations/collection_proxy.rb:301:in `create!'
+     # ./app/models/user.rb:38:in `follow!'
+     # ./spec/requests/user_pages_spec.rb:187:in `block (6 levels) in <top (required)>'
+     # ------------------
+     # --- Caused by: ---
+     # SQLite3::ConstraintException:
+     #   UNIQUE constraint failed: relationships.follower_id, relationships.followed_id
+     #   /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/sqlite3-1.3.13/lib/sqlite3/statement.rb:108:in `step'
+
+  8) User pages edit following/followers follow/unfollow buttons following a user should increment the followed user count
+     Failure/Error: click_button "Follow"
+
+     Capybara::ElementNotFound:
+       Unable to find button "Follow"
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/node/finders.rb:43:in `block in find'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/node/base.rb:84:in `synchronize'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/node/finders.rb:32:in `find'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/node/actions.rb:39:in `click_button'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/session.rb:698:in `block (2 levels) in <class:Session>'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/dsl.rb:51:in `block (2 levels) in <module:DSL>'
+     # ./spec/requests/user_pages_spec.rb:169:in `block (7 levels) in <top (required)>'
+     # ./spec/requests/user_pages_spec.rb:168:in `block (6 levels) in <top (required)>'
+
+  9) User pages edit following/followers follow/unfollow buttons following a user should increment the other user's followers count
+     Failure/Error: click_button "Follow"
+
+     Capybara::ElementNotFound:
+       Unable to find button "Follow"
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/node/finders.rb:43:in `block in find'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/node/base.rb:84:in `synchronize'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/node/finders.rb:32:in `find'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/node/actions.rb:39:in `click_button'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/session.rb:698:in `block (2 levels) in <class:Session>'
+     # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/dsl.rb:51:in `block (2 levels) in <module:DSL>'
+     # ./spec/requests/user_pages_spec.rb:175:in `block (7 levels) in <top (required)>'
+     # ./spec/requests/user_pages_spec.rb:174:in `block (6 levels) in <top (required)>'
+
+  10) User pages edit following/followers follow/unfollow buttons following a user toggling the button 
+      Failure/Error: before { click_button "Follow" }
+
+      Capybara::ElementNotFound:
+        Unable to find button "Follow"
+      # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/node/finders.rb:43:in `block in find'
+      # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/node/base.rb:84:in `synchronize'
+      # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/node/finders.rb:32:in `find'
+      # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/node/actions.rb:39:in `click_button'
+      # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/session.rb:698:in `block (2 levels) in <class:Session>'
+      # /home/tanya/.rvm/gems/ruby-2.2.8@railstutorial_rails_4_0/gems/capybara-2.5.0/lib/capybara/dsl.rb:51:in `block (2 levels) in <module:DSL>'
+      # ./spec/requests/user_pages_spec.rb:180:in `block (7 levels) in <top (required)>'
+
+  11) Authentication signin authorization for non-signed-in users when attempting to visit a protected page in the Users controller visiting the followers page should have title "Sign in"
+      Failure/Error: it { should have_title('Sign in') }
+        expected #has_title?("Sign in") to return true, got false
+      # ./spec/requests/authentication_pages_spec.rb:124:in `block (8 levels) in <top (required)>'
+
+  12) Authentication signin authorization for non-signed-in users when attempting to visit a protected page in the Users controller visiting the following page should have title "Sign in"
+      Failure/Error: it { should have_title('Sign in') }
+        expected #has_title?("Sign in") to return true, got false
+      # ./spec/requests/authentication_pages_spec.rb:119:in `block (8 levels) in <top (required)>'
+
+1 deprecation warning total
+
+Finished in 16.46 seconds (files took 3.34 seconds to load)
+142 examples, 12 failures
+
+Failed examples:
+
+rspec ./spec/controllers/relationships_controller_spec.rb:18 # RelationshipsController creating a relationship with Ajax should respond with success
+rspec ./spec/controllers/relationships_controller_spec.rb:12 # RelationshipsController creating a relationship with Ajax should increment the Relationship count
+rspec ./spec/controllers/relationships_controller_spec.rb:35 # RelationshipsController destroying a relationship with Ajax should respond with success
+rspec ./spec/controllers/relationships_controller_spec.rb:29 # RelationshipsController destroying a relationship with Ajax should decrement the Relationship count
+rspec ./spec/requests/user_pages_spec.rb:191 # User pages edit following/followers follow/unfollow buttons unfollowing a user should decrement the followed user count
+rspec ./spec/requests/user_pages_spec.rb:197 # User pages edit following/followers follow/unfollow buttons unfollowing a user should decrement the other user's followers count
+rspec ./spec/requests/user_pages_spec.rb:205 # User pages edit following/followers follow/unfollow buttons unfollowing a user toggling the button 
+rspec ./spec/requests/user_pages_spec.rb:167 # User pages edit following/followers follow/unfollow buttons following a user should increment the followed user count
+rspec ./spec/requests/user_pages_spec.rb:173 # User pages edit following/followers follow/unfollow buttons following a user should increment the other user's followers count
+rspec ./spec/requests/user_pages_spec.rb:181 # User pages edit following/followers follow/unfollow buttons following a user toggling the button 
+rspec ./spec/requests/authentication_pages_spec.rb:124 # Authentication signin authorization for non-signed-in users when attempting to visit a protected page in the Users controller visiting the followers page should have title "Sign in"
+rspec ./spec/requests/authentication_pages_spec.rb:119 # Authentication signin authorization for non-signed-in users when attempting to visit a protected page in the Users controller visiting the following page should have title "Sign in"
+
+Randomized with seed 62270
+
