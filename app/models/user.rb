@@ -38,6 +38,15 @@ class User < ActiveRecord::Base
     relationships.create!(followed_id: other_user.id)
   end
 
+  def feed
+    Micropost.from_users_followed_by(self)
+  end
+
+#  def follow!(friend)
+#    self.relationships.create({follower_id = friend.id})
+#  end
+#end
+
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy!
   end
